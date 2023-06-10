@@ -10,24 +10,31 @@ import {RentalData} from "../models/rentalData.model";
   providedIn: 'root'
 })
 export class RentalService {
-  private baseUrl = 'http://localhost:8080/v1/rentals';
+  private baseUrlOne = 'http://localhost:8080/v1/rental';
+  private baseUrlAll = 'http://localhost:8080/v1/rentals';
+
 
   constructor(private http: HttpClient) {}
 
   getRentals(): Observable<Rental[]> {
-    const url = `${this.baseUrl}`;
+    const url = `${this.baseUrlAll}`;
     return this.http.get<Rental[]>(url);
   }
 
   getOverdueRentals(): Observable<Rental[]> {
-    const url = `${this.baseUrl}/overdue`;
+    const url = `${this.baseUrlAll}/overdue`;
     return this.http.get<Rental[]>(url);
   }
 
   rentBook(book: Book): Observable<Rental> {
-    const url = this.baseUrl;
+    const url = this.baseUrlOne;
     const rentalData: RentalData = { book: { id: book.id } };
     console.log('rentalData:', rentalData); // Print rentalData to the console
     return this.http.post<Rental>(url, rentalData);
+  }
+
+  returnRental(rentalId: number): Observable<any> {
+    const url = `${this.baseUrlOne}/${rentalId}`;
+    return this.http.patch(url, {});
   }
 }
