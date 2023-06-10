@@ -1,0 +1,27 @@
+/* Set font styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Style the app-root component */
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Style the book-list and rental-list components */
+.app-component {
+  display: flex;
+  justify-content: center;
+}
+
+/* Style the book-list component */
+.app-book-list {
+  margin-right: 20px;
+}
+
+/* Style the rental-list component */
+.app-rental-list {
+  margin-left: 20px;
+}

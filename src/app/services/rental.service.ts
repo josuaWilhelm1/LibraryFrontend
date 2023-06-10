@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Rental } from '../models/rental.model';
 import {Book} from "../models/book.model";
+import {RentalData} from "../models/rentalData.model";
 
 
 @Injectable({
@@ -23,10 +24,10 @@ export class RentalService {
     return this.http.get<Rental[]>(url);
   }
 
-
   rentBook(book: Book): Observable<Rental> {
     const url = this.baseUrl;
-    const rentalData = { book: { id: book.id } };
+    const rentalData: RentalData = { book: { id: book.id } };
+    console.log('rentalData:', rentalData); // Print rentalData to the console
     return this.http.post<Rental>(url, rentalData);
   }
 }

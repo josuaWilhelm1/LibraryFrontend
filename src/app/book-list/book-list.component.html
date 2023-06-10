@@ -1,4 +1,5 @@
 <h1>Books</h1>
+
 <h2>Available Books</h2>
 <table>
   <thead>
@@ -9,7 +10,6 @@
     <th>Available</th>
     <th>Rental Count</th>
     <th>Rent Book</th>
-
   </tr>
   </thead>
   <tbody>
@@ -19,7 +19,9 @@
     <td>{{ book.genre }}</td>
     <td>{{ book.available ? 'Available' : 'Not Available' }}</td>
     <td>{{ book.rentalCount }}</td>
-    <td><button (click)="rentBook(book)">Rent</button></td>
+    <td>
+      <button (click)="rentBook(book)" *ngIf="book.available">Rent</button>
+    </td>
   </tr>
   </tbody>
 </table>
@@ -71,16 +73,24 @@
     <td>{{ book.genre }}</td>
     <td>{{ book.available ? 'Available' : 'Not Available' }}</td>
     <td>{{ book.rentalCount }}</td>
+    <td>
+      <button *ngIf="book.available" (click)="rentBook(book)">Rent</button>
+    </td>
   </tr>
   </tbody>
 </table>
+
 <h2>Books by Genre</h2>
 <div>
   <label for="genreSearch">Enter Genre:</label>
   <input type="text" id="genreSearch" [(ngModel)]="genreSearchText">
   <button (click)="getBooksByGenre()">Search</button>
 </div>
-<table>
+
+<p *ngIf="booksByGenre.length === 0 && genreSearchError" class="error-message">{{ genreSearchError }}</p>
+
+
+<table *ngIf="booksByGenre.length > 0">
   <thead>
   <tr>
     <th>Title</th>
@@ -97,6 +107,10 @@
     <td>{{ book.genre }}</td>
     <td>{{ book.available ? 'Available' : 'Not Available' }}</td>
     <td>{{ book.rentalCount }}</td>
+    <td>
+      <button *ngIf="book.available" (click)="rentBook(book)">Rent</button>
+    </td>
   </tr>
   </tbody>
 </table>
+
