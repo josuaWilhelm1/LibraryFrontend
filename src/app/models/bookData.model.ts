@@ -3,4 +3,5 @@ export interface BookData {
   author: {
     id: number;
   }
+  genre: string;
 }

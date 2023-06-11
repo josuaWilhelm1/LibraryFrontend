@@ -1,9 +1,10 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BookService } from '../../services/book.service';
-import { Author } from '../../models/author.model';
-import { AuthorService } from "../../services/author.service";
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {Component, Inject} from '@angular/core';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {BookService} from '../../services/book.service';
+import {Author} from '../../models/author.model';
+import {AuthorService} from "../../services/author.service";
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {BookUpdateService} from "../../services/book-update.service";
 
 @Component({
   selector: 'app-book-dialog',
@@ -13,14 +14,17 @@ export class BookDialogComponent {
   bookTitle: string = '';
   selectedAuthor: Author | undefined;
   authors: Author[] = [];
+  bookGenre: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<BookDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private bookService: BookService,
     private authorService: AuthorService,
-    private snackBar: MatSnackBar
-  ) {}
+    private snackBar: MatSnackBar,
+    private bookUpdateService: BookUpdateService,
+  ) {
+  }
 
   ngOnInit() {
     this.getAuthors();
@@ -32,13 +36,17 @@ export class BookDialogComponent {
       return;
     }
 
-    // Call the bookService.createBook method with the book title and author ID
-    const authorId: number = this.selectedAuthor.id;
-    this.bookService.createBook(this.bookTitle, authorId);
-
-    // Close the dialog
-    this.dialogRef.close();
+    this.bookService.createBook(this.bookTitle, this.selectedAuthor.id, this.bookGenre).subscribe(
+      (response) => {
+        this.bookUpdateService.notifyBookCreated();
+        this.dialogRef.close();
+      },
+      (error) => {
+        console.error('Error saving book:', error);
+      }
+    );
   }
+
 
   onCancel(): void {
     this.dialogRef.close();
@@ -50,7 +58,7 @@ export class BookDialogComponent {
         this.authors = authors;
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }

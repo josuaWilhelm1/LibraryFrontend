@@ -1,3 +1,5 @@
+/* You can add global styles to this file, and also import other style files */
+
 /* Table styles */
 table {
   width: 100%;
@@ -33,12 +35,17 @@ button {
 }
 
 /* Additional styles for Book Table */
-.green-tick::before {
+.status-icon::before {
   content: '\2714'; /* Unicode character for tick symbol */
-  color: var(--mat-green-500);
+  color: green;
 }
 
-.red-cross::before {
+.status-icon.red-cross::before {
   content: '\2718'; /* Unicode character for cross symbol */
-  color: var(--mat-red-500);
+  color: red;
+}
+
+/* Additional styles for Selected Author Books Table */
+.selected-author-books-container {
+  margin-bottom: 40px;
 }

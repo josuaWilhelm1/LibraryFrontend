@@ -9,6 +9,9 @@
       <mat-option *ngFor="let author of authors" [value]="author">{{ author.name }}</mat-option>
     </mat-select>
   </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Book Genre" [(ngModel)]="bookGenre" required>
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
   <button mat-button color="primary" (click)="onSave()">Save</button>

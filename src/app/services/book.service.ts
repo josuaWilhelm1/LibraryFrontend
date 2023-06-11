@@ -1,11 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Book } from '../models/book.model';
-import { Author } from '../models/author.model';
-import {RentalData} from "../models/rentalData.model";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Book} from '../models/book.model';
 import {BookData} from "../models/bookData.model";
-
+import {BookUpdateService} from "./book-update.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,32 +12,36 @@ export class BookService {
   private baseUrlAll = 'http://localhost:8080/v1/books';
   private baseUrlOne = 'http://localhost:8080/v1/book';
 
+  constructor(private http: HttpClient) {
+  }
 
-  constructor(private http: HttpClient) {}
-
-  getAvailableBooks(): Observable<Book[]> {
+  getAvailableBooks(): Observable<any> {
     const url = `${this.baseUrlAll}/available`;
     return this.http.get<Book[]>(url);
   }
 
-  getUnavailableBooks(): Observable<Book[]> {
+  getUnavailableBooks(): Observable<any> {
     const url = `${this.baseUrlAll}/unavailable`;
     return this.http.get<Book[]>(url);
   }
 
-  getBooksByAuthor(authorId: number): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.baseUrlAll}/byAuthor/${authorId}`);
+  getBooksByAuthor(authorId: number): Observable<any> {
+    const url = `${this.baseUrlAll}/byAuthor/${authorId}`;
+    return this.http.get<Book[]>(url);
   }
 
-  getBooksByGenre(genre: string) {
+  getBooksByGenre(genre: string): Observable<any> {
     const url = `${this.baseUrlAll}/byGenre?genre=${genre}`;
     return this.http.get<Book[]>(url);
   }
 
-
-  createBook(bookTitle: string, authorId: number) {
-    const url = `${this.baseUrlAll}`;
-    const bookData: BookData = { title: bookTitle, author: { id: authorId } };
-    return this.http.post<Book[]>(url,bookData);
+  createBook(bookTitle: string, authorId: number, bookGenre: string): Observable<any> {
+    const bookData: BookData = {
+      title: bookTitle,
+      author: {id: authorId},
+      genre: bookGenre
+    };
+    let result = this.http.post(this.baseUrlOne, bookData);
+    return result;
   }
 }

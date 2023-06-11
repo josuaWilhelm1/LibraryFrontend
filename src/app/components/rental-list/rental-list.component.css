@@ -1,16 +1,4 @@
-/* Table styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-table th,
-table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
+/* You can add global styles to this file, and also import other style files */
 
 /* Button styles */
 button {
@@ -33,18 +21,9 @@ button:hover {
 
 /* Additional styles for specific sections */
 
-/* Book List */
-.book-list-container {
-  margin-bottom: 40px;
-}
-
 /* Rentals */
 .rentals-container {
   margin-bottom: 40px;
-}
-
-.rentals-container .mat-h1 {
-  margin-bottom: 10px;
 }
 
 .rentals-container .mat-h2 {

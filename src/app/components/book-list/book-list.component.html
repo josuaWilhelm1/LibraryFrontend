@@ -1,7 +1,9 @@
 <h1>Books</h1>
 
 <h2>Available Books</h2>
-<table mat-table [dataSource]="availableBooks" class="mat-elevation-z8">
+<p *ngIf="availableBooks.length === 0 && availableBooksSearchError" class="error-message">{{ availableBooksSearchError }}</p>
+
+<table mat-table *ngIf="availableBooks.length > 0" [dataSource]="availableBooks" class="mat-elevation-z8">
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
     <td mat-cell *matCellDef="let book">{{ book.title }}</td>
@@ -17,7 +19,7 @@
   <ng-container matColumnDef="available">
     <th mat-header-cell *matHeaderCellDef>Available</th>
     <td mat-cell *matCellDef="let book">
-      <span [ngClass]="{ 'green-tick': book.available, 'red-cross': !book.available }"></span>
+      <span class="status-icon" [ngClass]="{ 'green-tick': book.available, 'red-cross': !book.available }"></span>
     </td>
   </ng-container>
   <ng-container matColumnDef="rentalCount">
@@ -36,7 +38,9 @@
 </table>
 
 <h2>Unavailable Books</h2>
-<table mat-table [dataSource]="unavailableBooks" class="mat-elevation-z8">
+<p *ngIf="unavailableBooks.length === 0 && unavailableBooksSearchError" class="error-message">{{ unavailableBooksSearchError }}</p>
+
+<table mat-table *ngIf="unavailableBooks.length > 0" [dataSource]="unavailableBooks" class="mat-elevation-z8">
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
     <td mat-cell *matCellDef="let book">{{ book.title }}</td>
@@ -52,7 +56,7 @@
   <ng-container matColumnDef="available">
     <th mat-header-cell *matHeaderCellDef>Available</th>
     <td mat-cell *matCellDef="let book">
-      <span [ngClass]="{ 'green-tick': book.available, 'red-cross': !book.available }"></span>
+      <span class="status-icon" [ngClass]="{ 'green-tick': book.available, 'red-cross': !book.available }"></span>
     </td>
   </ng-container>
   <ng-container matColumnDef="rentalCount">
@@ -75,7 +79,10 @@
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="resetAuthorSelection()">Reset</button>
 </div>
-<table mat-table [dataSource]="selectedAuthorBooks" class="mat-elevation-z8">
+
+<p *ngIf="selectedAuthorBooks.length === 0 && authorSearchError" class="error-message">{{ authorSearchError }}</p>
+
+<table mat-table *ngIf="selectedAuthorBooks.length > 0" [dataSource]="selectedAuthorBooks" class="mat-elevation-z8">
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
     <td mat-cell *matCellDef="let book">{{ book.title }}</td>
@@ -91,7 +98,7 @@
   <ng-container matColumnDef="available">
     <th mat-header-cell *matHeaderCellDef>Available</th>
     <td mat-cell *matCellDef="let book">
-      <span [ngClass]="{ 'green-tick': book.available, 'red-cross': !book.available }"></span>
+      <span class="status-icon" [ngClass]="{ 'green-tick': book.available, 'red-cross': !book.available }"></span>
     </td>
   </ng-container>
   <ng-container matColumnDef="rentalCount">
@@ -136,7 +143,7 @@
   <ng-container matColumnDef="available">
     <th mat-header-cell *matHeaderCellDef>Available</th>
     <td mat-cell *matCellDef="let book">
-      <span [ngClass]="{ 'green-tick': book.available, 'red-cross': !book.available }"></span>
+      <span class="status-icon" [ngClass]="{ 'green-tick': book.available, 'red-cross': !book.available }"></span>
     </td>
   </ng-container>
   <ng-container matColumnDef="rentalCount">

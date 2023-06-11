@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { BookService } from '../../services/book.service';
-import { Author } from '../../models/author.model';
-import { Book } from '../../models/book.model';
-import { AuthorService } from '../../services/author.service';
-import { RentalService } from '../../services/rental.service';
+import {Component, OnInit} from '@angular/core';
+import {BookService} from '../../services/book.service';
+import {Author} from '../../models/author.model';
+import {Book} from '../../models/book.model';
+import {AuthorService} from '../../services/author.service';
+import {RentalService} from '../../services/rental.service';
+import {BookUpdateService} from "../../services/book-update.service";
+import {RentalUpdateService} from "../../services/rental-update.service";
+import {RentalReturnService} from "../../services/rental-return.service";
+import {AuthorUpdateService} from "../../services/author-update.service";
 
 @Component({
   selector: 'app-book-list',
@@ -19,27 +23,58 @@ export class BookListComponent implements OnInit {
   booksByGenre: Book[] = [];
   genreSearchText: string = "";
   genreSearchError: string = "";
+  authorSearchError: String = "";
   genreSearchButtonClicked = false;
+  unavailableBooksSearchError : string="";
+  availableBooksSearchError: string="";
 
   constructor(
     private bookService: BookService,
     private authorService: AuthorService,
-    private rentalService: RentalService
-  ) {}
+    private rentalService: RentalService,
+    private bookUpdateService: BookUpdateService,
+    private rentalUpdateService: RentalUpdateService,
+    private rentalReturnService: RentalReturnService,
+    private authorUpdateService: AuthorUpdateService,
+
+  ) {
+  }
 
   ngOnInit() {
     this.getAvailableBooks();
     this.getUnavailableBooks();
     this.getAuthors();
+    this.bookUpdateService.bookCreated$.subscribe(() => {
+      this.getAvailableBooks();
+      this.getUnavailableBooks();
+    });
+    this.rentalUpdateService.rentalCreated$.subscribe(() => {
+      this.getAvailableBooks();
+      this.getUnavailableBooks();
+    })
+    this.rentalReturnService.rentalReturn$.subscribe(() => {
+      this.getAvailableBooks();
+      this.getUnavailableBooks();
+    })
+    this.authorUpdateService.authorCreated$.subscribe(() => {
+      this.getAuthors();
+    })
   }
 
   getAvailableBooks() {
     this.bookService.getAvailableBooks().subscribe(
       (books) => {
         this.availableBooks = books;
+        if (books.length === 0) {
+          this.availableBooksSearchError = 'No available Books Found.';
+        } else {
+          this.availableBooksSearchError = '';
+        }
       },
       (error) => {
-        console.log(error);
+        console.error(error);
+        this.unavailableBooks = [];
+        this.unavailableBooksSearchError = 'Error occurred while searching for books.';
       }
     );
   }
@@ -48,20 +83,16 @@ export class BookListComponent implements OnInit {
     this.bookService.getUnavailableBooks().subscribe(
       (books) => {
         this.unavailableBooks = books;
+        if (books.length === 0) {
+          this.unavailableBooksSearchError = 'No unavailable Books Found.';
+        } else {
+          this.unavailableBooksSearchError = '';
+        }
       },
       (error) => {
-        console.log(error);
-      }
-    );
-  }
-
-  getAuthors() {
-    this.authorService.getAuthors().subscribe(
-      (authors) => {
-        this.authors = authors;
-      },
-      (error) => {
-        console.log(error);
+        console.error(error);
+        this.unavailableBooks = [];
+        this.unavailableBooksSearchError = 'Error occurred while searching for books.';
       }
     );
   }
@@ -71,17 +102,19 @@ export class BookListComponent implements OnInit {
       this.bookService.getBooksByAuthor(this.selectedAuthorId).subscribe(
         (books) => {
           this.selectedAuthorBooks = books;
+          if (books.length === 0) {
+            this.genreSearchError = 'No books found by Author.';
+          } else {
+            this.genreSearchError = '';
+          }
         },
         (error) => {
-          console.log(error);
+          console.error(error);
+          this.selectedAuthorBooks = [];
+          this.genreSearchError = 'Error occurred while searching for books.';
         }
       );
     }
-  }
-
-  resetAuthorSelection() {
-    this.selectedAuthorId = null;
-    this.selectedAuthorBooks = [];
   }
 
   getBooksByGenre() {
@@ -96,7 +129,7 @@ export class BookListComponent implements OnInit {
         }
       },
       (error) => {
-        console.log('Error:', error);
+        console.error('Error:', error);
         this.booksByGenre = [];
         this.genreSearchError = 'Error occurred while searching for books.';
       }
@@ -106,13 +139,27 @@ export class BookListComponent implements OnInit {
   rentBook(book: Book) {
     this.rentalService.rentBook(book).subscribe(
       () => {
-        console.log(`Book rented: ${book.title}`);
-        // Perform any additional operations after renting the book
+        this.rentalUpdateService.notifyRentalCreated()
       },
       (error) => {
-        console.log(error);
-        // Handle any error that occurred during the rental process
+        console.error(error);
       }
     );
+  }
+
+  getAuthors() {
+    this.authorService.getAuthors().subscribe(
+      (authors) => {
+        this.authors = authors;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  resetAuthorSelection() {
+    this.selectedAuthorId = null;
+    this.selectedAuthorBooks = [];
   }
 }

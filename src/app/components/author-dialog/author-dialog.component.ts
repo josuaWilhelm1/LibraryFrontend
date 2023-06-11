@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {AuthorService} from "../../services/author.service";
+import {AuthorUpdateService} from "../../services/author-update.service";
 
 @Component({
   selector: 'app-author-dialog',
@@ -13,12 +14,20 @@ export class AuthorDialogComponent {
     public dialogRef: MatDialogRef<AuthorDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private authorService: AuthorService,
+    private authorUpdateService: AuthorUpdateService
   ) {
   }
 
   onSave(): void {
-    this.authorService.createAuthor(this.authorName);
-    this.dialogRef.close();
+    this.authorService.createAuthor(this.authorName).subscribe(
+      (response) => {
+        this.authorUpdateService.notifyAuthorCreated();
+        this.dialogRef.close();
+      },
+      (error) => {
+        console.error('Error saving author:', error);
+      }
+    );
   }
 
   onCancel(): void {
