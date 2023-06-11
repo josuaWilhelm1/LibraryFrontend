@@ -103,15 +103,15 @@ export class BookListComponent implements OnInit {
         (books) => {
           this.selectedAuthorBooks = books;
           if (books.length === 0) {
-            this.genreSearchError = 'No books found by Author.';
+            this.authorSearchError = 'No books found by Author.';
           } else {
-            this.genreSearchError = '';
+            this.authorSearchError = '';
           }
         },
         (error) => {
           console.error(error);
           this.selectedAuthorBooks = [];
-          this.genreSearchError = 'Error occurred while searching for books.';
+          this.authorSearchError = 'Error occurred while searching for books.';
         }
       );
     }

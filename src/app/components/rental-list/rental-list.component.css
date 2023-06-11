@@ -1,4 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #f2f2f2; /* Lighter gray color */
+
+}
 
 /* Button styles */
 button {
@@ -19,41 +32,7 @@ button:hover {
   color: red;
 }
 
-/* Additional styles for specific sections */
 
-/* Rentals */
-.rentals-container {
-  margin-bottom: 40px;
-}
-
-.rentals-container .mat-h2 {
-  margin-bottom: 15px;
-}
-
-.rentals-container table {
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-}
-
-.rentals-container table th {
-  background-color: #007bff;
-  color: white;
-}
-
-.rentals-container table td {
-  background-color: white;
-}
-
-.rentals-container button {
-  margin-top: 5px;
-  background-color: #007bff;
-}
-
-.rentals-container button:hover {
-  background-color: #0056b3;
-}
-
-/* Additional styles for Book Table */
 .status-icon::before {
   content: '\2714'; /* Unicode character for tick symbol */
   color: green;
@@ -62,4 +41,16 @@ button:hover {
 .status-icon.red-cross::before {
   content: '\2718'; /* Unicode character for cross symbol */
   color: red;
+}
+
+.box {
+  margin: 10px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 20px;
 }

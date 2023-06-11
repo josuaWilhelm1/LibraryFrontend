@@ -1,114 +1,128 @@
-<h1 class="mat-h1">Rentals</h1>
+<div class="box">
+  <div class="box">
+    <h1>Rentals</h1>
+  </div>
 
-<h2 class="mat-h2">Overdue Rentals</h2>
-<p *ngIf="overdueRentals.length === 0 && overdueRentalsError" class="error-message">{{ overdueRentalsError }}</p>
+  <div class="box">
+    <h2>Overdue Rentals</h2>
+    <p *ngIf="overdueRentals.length === 0 && overdueRentalsError" class="error-message">{{ overdueRentalsError }}</p>
 
-<table mat-table class="mat-elevation-z8" *ngIf="overdueRentals.length > 0" [dataSource]="overdueRentals">
-  <ng-container matColumnDef="book">
-    <th mat-header-cell *matHeaderCellDef>Book</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.title }}</td>
-  </ng-container>
-  <ng-container matColumnDef="author">
-    <th mat-header-cell *matHeaderCellDef>Author</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.author.name }}</td>
-  </ng-container>
-  <ng-container matColumnDef="genre">
-    <th mat-header-cell *matHeaderCellDef>Genre</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.genre }}</td>
-  </ng-container>
-  <ng-container matColumnDef="returnDate">
-    <th mat-header-cell *matHeaderCellDef>Return Date</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.returnDate }}</td>
-  </ng-container>
-  <ng-container matColumnDef="returned">
-    <th mat-header-cell *matHeaderCellDef>Returned</th>
-    <td mat-cell *matCellDef="let rental">
-      <span class="status-icon" [ngClass]="{ 'green-tick': rental.returned, 'red-cross': !rental.returned }"></span>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="returnBook">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let rental">
-      <button mat-raised-button color="primary" *ngIf="!rental.returned" (click)="returnBook(rental)">Return</button>
-    </td>
-  </ng-container>
+    <table mat-table *ngIf="overdueRentals.length > 0" [dataSource]="overdueRentals">
+      <ng-container matColumnDef="book">
+        <th mat-header-cell *matHeaderCellDef>Book</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.title }}</td>
+      </ng-container>
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef>Author</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.author.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef>Genre</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.genre }}</td>
+      </ng-container>
+      <ng-container matColumnDef="returnDate">
+        <th mat-header-cell *matHeaderCellDef>Return Date</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.returnDate }}</td>
+      </ng-container>
+      <ng-container matColumnDef="returned">
+        <th mat-header-cell *matHeaderCellDef>Returned</th>
+        <td mat-cell *matCellDef="let rental">
+          <span class="status-icon" [ngClass]="{ 'green-tick': rental.returned, 'red-cross': !rental.returned }"></span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="returnBook">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let rental">
+          <button mat-raised-button color="primary" *ngIf="!rental.returned" (click)="returnBook(rental)">Return
+          </button>
+        </td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
-  <tr mat-row
-      *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>
-</table>
+      <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
+      <tr mat-row
+          *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>
+    </table>
+  </div>
 
+  <div class="box">
+    <h2>Ongoing Rentals</h2>
+    <p *ngIf="ongoingRentals.length === 0 && ongoingRentalsError" class="error-message">{{ ongoingRentalsError }}</p>
+    <table mat-table *ngIf="ongoingRentals.length > 0" [dataSource]="ongoingRentals">
+      <ng-container matColumnDef="book">
+        <th mat-header-cell *matHeaderCellDef>Book</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.title }}</td>
+      </ng-container>
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef>Author</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.author.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef>Genre</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.genre }}</td>
+      </ng-container>
+      <ng-container matColumnDef="returnDate">
+        <th mat-header-cell *matHeaderCellDef>Return Date</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.returnDate }}</td>
+      </ng-container>
+      <ng-container matColumnDef="returned">
+        <th mat-header-cell *matHeaderCellDef>Returned</th>
+        <td mat-cell *matCellDef="let rental">
+          <span class="status-icon" [ngClass]="{ 'green-tick': rental.returned, 'red-cross': !rental.returned }"></span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="returnBook">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let rental">
+          <button mat-raised-button color="primary" *ngIf="!rental.returned" (click)="returnBook(rental)">Return
+          </button>
+        </td>
+      </ng-container>
 
-<h2 class="mat-h2">Ongoing Rentals</h2>
-<p *ngIf="ongoingRentals.length === 0 && ongoingRentalsError" class="error-message">{{ ongoingRentalsError }}</p>
-<table mat-table class="mat-elevation-z8" *ngIf="ongoingRentals.length > 0" [dataSource]="ongoingRentals">
-  <ng-container matColumnDef="book">
-    <th mat-header-cell *matHeaderCellDef>Book</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.title }}</td>
-  </ng-container>
-  <ng-container matColumnDef="author">
-    <th mat-header-cell *matHeaderCellDef>Author</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.author.name }}</td>
-  </ng-container>
-  <ng-container matColumnDef="genre">
-    <th mat-header-cell *matHeaderCellDef>Genre</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.genre }}</td>
-  </ng-container>
-  <ng-container matColumnDef="returnDate">
-    <th mat-header-cell *matHeaderCellDef>Return Date</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.returnDate }}</td>
-  </ng-container>
-  <ng-container matColumnDef="returned">
-    <th mat-header-cell *matHeaderCellDef>Returned</th>
-    <td mat-cell *matCellDef="let rental">
-      <span class="status-icon" [ngClass]="{ 'green-tick': rental.returned, 'red-cross': !rental.returned }"></span>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="returnBook">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let rental">
-      <button mat-raised-button color="primary" *ngIf="!rental.returned" (click)="returnBook(rental)">Return</button>
-    </td>
-  </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
+      <tr mat-row
+          *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>
+    </table>
+  </div>
 
-  <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
-  <tr mat-row
-      *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>
-</table>
+  <div class="box">
+    <h2>Returned Rentals</h2>
+    <p *ngIf="returnedRentals.length === 0 && returnedRentalsError" class="error-message">{{ returnedRentalsError }}</p>
+    <table mat-table *ngIf="returnedRentals.length > 0" [dataSource]="returnedRentals">
+      <ng-container matColumnDef="book">
+        <th mat-header-cell *matHeaderCellDef>Book</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.title }}</td>
+      </ng-container>
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef>Author</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.author.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef>Genre</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.book.genre }}</td>
+      </ng-container>
+      <ng-container matColumnDef="returnDate">
+        <th mat-header-cell *matHeaderCellDef>Return Date</th>
+        <td mat-cell *matCellDef="let rental">{{ rental.returnDate }}</td>
+      </ng-container>
+      <ng-container matColumnDef="returned">
+        <th mat-header-cell *matHeaderCellDef>Returned</th>
+        <td mat-cell *matCellDef="let rental">
+          <span class="status-icon" [ngClass]="{ 'green-tick': rental.returned, 'red-cross': !rental.returned }"></span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="returnBook">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let rental">
+          <button mat-raised-button color="primary" *ngIf="!rental.returned" (click)="returnBook(rental)">Return
+          </button>
+        </td>
+      </ng-container>
 
-<h2 class="mat-h2">Returned Rentals</h2>
-<p *ngIf="returnedRentals.length === 0 && returnedRentalsError" class="error-message">{{ returnedRentalsError }}</p>
-<table mat-table class="mat-elevation-z8" *ngIf="returnedRentals.length > 0" [dataSource]="returnedRentals">
-  <ng-container matColumnDef="book">
-    <th mat-header-cell *matHeaderCellDef>Book</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.title }}</td>
-  </ng-container>
-  <ng-container matColumnDef="author">
-    <th mat-header-cell *matHeaderCellDef>Author</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.author.name }}</td>
-  </ng-container>
-  <ng-container matColumnDef="genre">
-    <th mat-header-cell *matHeaderCellDef>Genre</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.book.genre }}</td>
-  </ng-container>
-  <ng-container matColumnDef="returnDate">
-    <th mat-header-cell *matHeaderCellDef>Return Date</th>
-    <td mat-cell *matCellDef="let rental">{{ rental.returnDate }}</td>
-  </ng-container>
-  <ng-container matColumnDef="returned">
-    <th mat-header-cell *matHeaderCellDef>Returned</th>
-    <td mat-cell *matCellDef="let rental">
-      <span class="status-icon" [ngClass]="{ 'green-tick': rental.returned, 'red-cross': !rental.returned }"></span>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="returnBook">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let rental">
-      <button mat-raised-button color="primary" *ngIf="!rental.returned" (click)="returnBook(rental)">Return</button>
-    </td>
-  </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
+      <tr mat-row
+          *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>
+    </table>
+  </div>
 
-  <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
-  <tr mat-row
-      *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>
-</table>
+</div>
+

@@ -1,10 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-
 /* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
 }
 
 table th,
@@ -12,6 +9,8 @@ table td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  background-color: #f2f2f2; /* Lighter gray color */
+
 }
 
 /* Button styles */
@@ -19,7 +18,13 @@ button {
   padding: 6px 12px;
   border-radius: 4px;
   border: none;
+  background-color: #007bff;
+  color: white;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
 
 /* Error message styles */
@@ -27,14 +32,7 @@ button {
   color: red;
 }
 
-/* Additional styles for specific sections */
 
-/* Book List */
-.mat-elevation-z8 {
-  margin-bottom: 40px;
-}
-
-/* Additional styles for Book Table */
 .status-icon::before {
   content: '\2714'; /* Unicode character for tick symbol */
   color: green;
@@ -45,7 +43,14 @@ button {
   color: red;
 }
 
-/* Additional styles for Selected Author Books Table */
-.selected-author-books-container {
-  margin-bottom: 40px;
+.box {
+  margin: 10px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 20px;
 }
