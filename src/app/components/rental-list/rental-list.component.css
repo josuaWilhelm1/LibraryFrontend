@@ -1,0 +1,86 @@
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Button styles */
+button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styles */
+.error-message {
+  color: red;
+}
+
+/* Additional styles for specific sections */
+
+/* Book List */
+.book-list-container {
+  margin-bottom: 40px;
+}
+
+/* Rentals */
+.rentals-container {
+  margin-bottom: 40px;
+}
+
+.rentals-container .mat-h1 {
+  margin-bottom: 10px;
+}
+
+.rentals-container .mat-h2 {
+  margin-bottom: 15px;
+}
+
+.rentals-container table {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+}
+
+.rentals-container table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.rentals-container table td {
+  background-color: white;
+}
+
+.rentals-container button {
+  margin-top: 5px;
+  background-color: #007bff;
+}
+
+.rentals-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Additional styles for Book Table */
+.status-icon::before {
+  content: '\2714'; /* Unicode character for tick symbol */
+  color: green;
+}
+
+.status-icon.red-cross::before {
+  content: '\2718'; /* Unicode character for cross symbol */
+  color: red;
+}

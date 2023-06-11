@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Rental } from '../models/rental.model';
-import { RentalService } from '../services/rental.service';
+import { Rental } from '../../models/rental.model';
+import { RentalService } from '../../services/rental.service';
 
 @Component({
   selector: 'app-rental-list',
@@ -8,20 +8,32 @@ import { RentalService } from '../services/rental.service';
   styleUrls: ['./rental-list.component.css'],
 })
 export class RentalListComponent implements OnInit {
-  rentals: Rental[] = [];
+  ongoingRentals: Rental[] = [];
+  returnedRentals: Rental[]= [];
   overdueRentals: Rental[] = [];
 
   constructor(private rentalService: RentalService) {}
 
   ngOnInit() {
-    this.getRentals();
+    this.getOngoingRentals();
+    this.getReturnedRentals();
     this.getOverdueRentals();
   }
 
-  getRentals() {
-    this.rentalService.getRentals().subscribe(
+  getOngoingRentals() {
+    this.rentalService.getOngoingRentals().subscribe(
       (rentals: Rental[]) => {
-        this.rentals = rentals;
+        this.ongoingRentals = rentals;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  getReturnedRentals() {
+    this.rentalService.getReturnedRentals().subscribe(
+      (rentals: Rental[]) => {
+        this.returnedRentals = rentals;
       },
       (error) => {
         console.log(error);

@@ -1,0 +1,44 @@
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Button styles */
+button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Error message styles */
+.error-message {
+  color: red;
+}
+
+/* Additional styles for specific sections */
+
+/* Book List */
+.mat-elevation-z8 {
+  margin-bottom: 40px;
+}
+
+/* Additional styles for Book Table */
+.green-tick::before {
+  content: '\2714'; /* Unicode character for tick symbol */
+  color: var(--mat-green-500);
+}
+
+.red-cross::before {
+  content: '\2718'; /* Unicode character for cross symbol */
+  color: var(--mat-red-500);
+}

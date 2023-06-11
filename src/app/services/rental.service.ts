@@ -16,10 +16,7 @@ export class RentalService {
 
   constructor(private http: HttpClient) {}
 
-  getRentals(): Observable<Rental[]> {
-    const url = `${this.baseUrlAll}`;
-    return this.http.get<Rental[]>(url);
-  }
+
 
   getOverdueRentals(): Observable<Rental[]> {
     const url = `${this.baseUrlAll}/overdue`;
@@ -29,7 +26,6 @@ export class RentalService {
   rentBook(book: Book): Observable<Rental> {
     const url = this.baseUrlOne;
     const rentalData: RentalData = { book: { id: book.id } };
-    console.log('rentalData:', rentalData); // Print rentalData to the console
     return this.http.post<Rental>(url, rentalData);
   }
 
@@ -37,4 +33,14 @@ export class RentalService {
     const url = `${this.baseUrlOne}/${rentalId}`;
     return this.http.patch(url, {});
   }
+
+  getOngoingRentals():Observable<Rental[]> {
+    const url = `${this.baseUrlAll}/ongoing`;
+    return this.http.get<Rental[]>(url);
+      }
+
+  getReturnedRentals():Observable<Rental[]> {
+    const url = `${this.baseUrlAll}/returned`;
+    return this.http.get<Rental[]>(url);
+      }
 }
