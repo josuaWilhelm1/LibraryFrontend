@@ -7,7 +7,8 @@
   text-align: center;
   width: 300px;
   border-radius: 4px;
-  background-color: #f5f5f5; /* Replace with the desired color */
+  background-color: lightgray;
+  z-index: 9999
 }
 
 h2 {

@@ -46,6 +46,10 @@ button:hover {
 .box {
   margin: 10px;
 }
+.outerBox {
+  margin: 10px;
+  margin-bottom: 150px;
+}
 
 h1 {
   font-size: 30px;
