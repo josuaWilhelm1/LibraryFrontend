@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Author} from '../models/author.model';
 import {AuthorData} from "../models/authorData.model";
-import {AuthorUpdateService} from "./author-update.service";
 
 @Injectable({
   providedIn: 'root'
