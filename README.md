@@ -1,16 +1,35 @@
-# This is the frontend for the Library Application
+# Library Application Frontend
 
+This repository contains the frontend code for the Library Application.
 
-## To run this frontend pls:
-    - have node.js and npm installed (check with 'node -v' and 'npm -v')
-    - run 'npm install' in  root folder (.../LibraryFrontend)
-    - run 'ng serve' in  root folder (.../LibraryFrontend)
+## Prerequisites
+Before running the frontend, ensure that you have the following software installed:
+- Node.js: To check if Node.js is installed, run the command `node -v` in the terminal.
+- npm (Node Package Manager): To check if npm is installed, run the command `npm -v` in the terminal.
 
-## Default port for frontend: 'localhost:4200'
-    -  this can be changed in the angular.json file by adding '"port": 4201' in the options section
+## Getting Started
+To run the frontend, follow these steps:
 
-## The Backend has to run on localhost:8080 so the services can access the backend
-    - this can be changed in the Services (.../src/app/services)
-      - in 'author.service.ts, book.service.ts and rental.service.ts change the variables 'apiUrlAll' and 'apiUrlOne'
+1. Clone this repository to your local machine.
+2. Open a terminal and navigate to the root folder of the frontend project.
 
+3. Install the project dependencies by running the following command: `npm install`
+4. Start the development server by running the following command: `ng serve`
 
+5. Open your web browser and visit `http://localhost:4200` to access the Library Application.
+
+## Customizing the Port
+By default, the frontend runs on `localhost:4200`. If you want to change the port, you can modify the `angular.json` file. Follow these steps:
+
+1. Locate the `angular.json` file in the root folder of the frontend project.
+2. In the `"serve" -> "options"` section, add the following line: `"port": 4201`
+  - Replace 4201 with your desired port number.
+
+## Backend Configuration
+The frontend relies on the backend running on `localhost:8080`. If you need to change the backend URL, follow these steps:
+
+1. Open the relevant service files located in the `src/app/services` directory:
+- `author.service.ts`
+- `book.service.ts`
+- `rental.service.ts`
+2. Update the `apiUrlAll` and `apiUrlOne` variables in each service file to the desired backend URL.
