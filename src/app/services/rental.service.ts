@@ -5,6 +5,7 @@ import {Rental} from '../models/rental.model';
 import {Book} from "../models/book.model";
 import {RentalData} from "../models/rentalData.model";
 
+//RentalService for HTTP requests
 @Injectable({
   providedIn: 'root'
 })

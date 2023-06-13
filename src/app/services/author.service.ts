@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Author} from '../models/author.model';
 import {AuthorData} from "../models/authorData.model";
 
+//AuthorService for HTTP requests
 @Injectable({
   providedIn: 'root'
 })

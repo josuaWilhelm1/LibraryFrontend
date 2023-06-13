@@ -2,45 +2,39 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Style the app-root component */
 h1 {
   text-align: center;
   margin-top: 40px;
   margin-bottom: 20px;
 }
 
-/* Style the container */
 .container {
   display: flex;
 }
 
-/* Style the left-panel and right-panel */
 .left-panel,
 .right-panel {
   flex: 1;
 }
 
 .left-panel {
-  margin-right: 10px; /* Adjust as needed */
+  margin-right: 10px;
 }
 
 .right-panel {
-  margin-left: 10px; /* Adjust as needed */
+  margin-left: 10px;
 }
 
-/* Style the book-list component */
 .app-book-list {
   background-color: #f5f5f5;
   padding: 10px;
 }
 
-/* Style the rental-list component */
 .app-rental-list {
   background-color: #f5f5f5;
   padding: 10px;
 }
 
-/* Style the book table */
 table.book-table {
   width: 100%;
   border-collapse: collapse;
@@ -57,7 +51,6 @@ table.book-table th {
   text-align: left;
 }
 
-/* Style the rental table */
 table.rental-table {
   width: 100%;
   border-collapse: collapse;
@@ -74,7 +67,6 @@ table.rental-table th {
   text-align: left;
 }
 
-/* Style the tick and cross icons */
 .icon-tick {
   color: green;
 }
@@ -83,7 +75,6 @@ table.rental-table th {
   color: red;
 }
 
-/* Style the blue buttons */
 button {
   background-color: blue;
   color: white;

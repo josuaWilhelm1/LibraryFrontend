@@ -3,6 +3,7 @@ import {Rental} from '../../models/rental.model';
 import {RentalService} from '../../services/rental.service';
 import {RentalUpdateService} from "../../services/rental-update.service";
 
+//Displays ongoing returned and overdue rentals
 @Component({
   selector: 'app-rental-list',
   templateUrl: './rental-list.component.html',
@@ -25,11 +26,13 @@ export class RentalListComponent implements OnInit {
     this.getOngoingRentals();
     this.getReturnedRentals();
     this.getOverdueRentals();
+    //update rentals on rental creation
     this.rentalUpdateService.rentalCreated$.subscribe(() => {
       this.getOngoingRentals();
       this.getReturnedRentals();
       this.getOverdueRentals();
     })
+    //update rentals on rental update
     this.rentalUpdateService.rentalReturned$.subscribe(() => {
       this.getOngoingRentals();
       this.getReturnedRentals();

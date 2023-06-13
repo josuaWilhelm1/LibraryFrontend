@@ -23,7 +23,7 @@ h2 {
 }
 
 .creation-button {
-  background-color: #2196f3; /* Replace with the desired color */
+  background-color: #2196f3;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -33,5 +33,5 @@ h2 {
 }
 
 .creation-button:hover {
-  background-color: #1976d2; /* Replace with the desired color */
+  background-color: #1976d2;
 }

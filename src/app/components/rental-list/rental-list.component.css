@@ -1,4 +1,3 @@
-/* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -9,11 +8,10 @@ table td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
-  background-color: #f2f2f2; /* Lighter gray color */
+  background-color: #f2f2f2;
 
 }
 
-/* Button styles */
 button {
   padding: 6px 12px;
   border-radius: 4px;
@@ -27,19 +25,19 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Error message styles */
+
 .error-message {
   color: red;
 }
 
 
 .status-icon::before {
-  content: '\2714'; /* Unicode character for tick symbol */
+  content: '\2714';
   color: green;
 }
 
 .status-icon.red-cross::before {
-  content: '\2718'; /* Unicode character for cross symbol */
+  content: '\2718';
   color: red;
 }
 

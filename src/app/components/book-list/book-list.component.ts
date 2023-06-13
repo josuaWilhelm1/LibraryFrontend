@@ -8,6 +8,7 @@ import {BookUpdateService} from "../../services/book-update.service";
 import {RentalUpdateService} from "../../services/rental-update.service";
 import {AuthorUpdateService} from "../../services/author-update.service";
 
+//Displays available, unavailable, by author, by genre books
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -42,18 +43,22 @@ export class BookListComponent implements OnInit {
     this.getAvailableBooks();
     this.getUnavailableBooks();
     this.getAuthors();
+    //update books on book creation
     this.bookUpdateService.bookCreated$.subscribe(() => {
       this.getAvailableBooks();
       this.getUnavailableBooks();
     });
+    //update books on book rental creation
     this.rentalUpdateService.rentalCreated$.subscribe(() => {
       this.getAvailableBooks();
       this.getUnavailableBooks();
     })
+    //update books on rental update
     this.rentalUpdateService.rentalReturned$.subscribe(() => {
       this.getAvailableBooks();
       this.getUnavailableBooks();
     })
+    //update authors on creation
     this.authorUpdateService.authorCreated$.subscribe(() => {
       this.getAuthors();
     })

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 
+//RentalUpdateService for notifying Components about rental creation and return -> renting and returning books
 @Injectable({
   providedIn: 'root'
 })

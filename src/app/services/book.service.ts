@@ -3,8 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Book} from '../models/book.model';
 import {BookData} from "../models/bookData.model";
-import {BookUpdateService} from "./book-update.service";
 
+//BookService for HTTP requests
 @Injectable({
   providedIn: 'root'
 })

@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {AuthorService} from "../../services/author.service";
 import {AuthorUpdateService} from "../../services/author-update.service";
 
+//Dialog for creating Authors
 @Component({
   selector: 'app-author-dialog',
   templateUrl: './author-dialog.component.html',

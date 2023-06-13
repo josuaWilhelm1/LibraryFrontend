@@ -1,3 +1,4 @@
+// Book model for components and HTTP Get requests
 export interface Book {
   id: number;
   title: string;

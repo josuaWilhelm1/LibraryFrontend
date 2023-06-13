@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 
+//AuthorUpdateService for notifying Components about author creation
 @Injectable({
   providedIn: 'root'
 })

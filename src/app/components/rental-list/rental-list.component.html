@@ -1,12 +1,15 @@
+<!--Boxes for margins-->
 <div class="outerBox">
+
   <div class="box">
     <h1>Rentals</h1>
   </div>
 
   <div class="box">
     <h2>Overdue Rentals</h2>
+    <!--Errormessage Overdue Rentals-->
     <p *ngIf="overdueRentals.length === 0 && overdueRentalsError" class="error-message">{{ overdueRentalsError }}</p>
-
+    <!--Overdue Rentals Table-->
     <table mat-table *ngIf="overdueRentals.length > 0" [dataSource]="overdueRentals">
       <ng-container matColumnDef="book">
         <th mat-header-cell *matHeaderCellDef>Book</th>
@@ -37,7 +40,7 @@
           </button>
         </td>
       </ng-container>
-
+      <!--Columns overdue Rentals-->
       <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
       <tr mat-row
           *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>
@@ -46,7 +49,9 @@
 
   <div class="box">
     <h2>Ongoing Rentals</h2>
+    <!--Errormessage Ongoing Rentals-->
     <p *ngIf="ongoingRentals.length === 0 && ongoingRentalsError" class="error-message">{{ ongoingRentalsError }}</p>
+    <!--Ongoing Rentals Table-->
     <table mat-table *ngIf="ongoingRentals.length > 0" [dataSource]="ongoingRentals">
       <ng-container matColumnDef="book">
         <th mat-header-cell *matHeaderCellDef>Book</th>
@@ -77,7 +82,7 @@
           </button>
         </td>
       </ng-container>
-
+      <!--Columns Ongoing Rentals-->
       <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
       <tr mat-row
           *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>
@@ -86,7 +91,9 @@
 
   <div class="box">
     <h2>Returned Rentals</h2>
+    <!--Errormessage Returned Rentals-->
     <p *ngIf="returnedRentals.length === 0 && returnedRentalsError" class="error-message">{{ returnedRentalsError }}</p>
+    <!--Returned Rentals Table-->
     <table mat-table *ngIf="returnedRentals.length > 0" [dataSource]="returnedRentals">
       <ng-container matColumnDef="book">
         <th mat-header-cell *matHeaderCellDef>Book</th>
@@ -117,7 +124,7 @@
           </button>
         </td>
       </ng-container>
-
+      <!--Columns Returned Rentals-->
       <tr mat-header-row *matHeaderRowDef="['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook']"></tr>
       <tr mat-row
           *matRowDef="let rental; columns: ['book', 'author', 'genre', 'returnDate', 'returned', 'returnBook'];"></tr>

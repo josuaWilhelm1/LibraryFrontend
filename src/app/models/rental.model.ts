@@ -1,3 +1,4 @@
+// Rental Model  for components and HTTP Get requests
 export interface Rental {
   id: number;
   book: {
