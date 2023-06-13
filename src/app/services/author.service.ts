@@ -12,7 +12,6 @@ export class AuthorService {
   private apiUrlAll = 'http://localhost:8080/v1/authors';
   private apiUrlOne = 'http://localhost:8080/v1/author';
 
-
   constructor(private http: HttpClient) {
   }
 

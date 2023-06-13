@@ -13,10 +13,8 @@ export class RentalService {
   private baseUrlOne = 'http://localhost:8080/v1/rental';
   private baseUrlAll = 'http://localhost:8080/v1/rentals';
 
-
   constructor(private http: HttpClient) {
   }
-
 
   getOverdueRentals(): Observable<Rental[]> {
     const url = `${this.baseUrlAll}/overdue`;
@@ -27,7 +25,6 @@ export class RentalService {
     const url = `${this.baseUrlAll}/ongoing`;
     return this.http.get<Rental[]>(url);
   }
-
 
   getReturnedRentals(): Observable<Rental[]> {
     const url = `${this.baseUrlAll}/returned`;
