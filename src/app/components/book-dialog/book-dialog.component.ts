@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {BookService} from '../../services/book.service';
 import {Author} from '../../models/author.model';
@@ -11,7 +11,7 @@ import {BookUpdateService} from "../../services/book-update.service";
   selector: 'app-book-dialog',
   templateUrl: './book-dialog.component.html',
 })
-export class BookDialogComponent {
+export class BookDialogComponent implements OnInit {
   bookTitle: string = '';
   selectedAuthor: Author | undefined;
   authors: Author[] = [];
