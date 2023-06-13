@@ -16,7 +16,7 @@ export class CreationComponent {
     const dialogRef = this.dialog.open(AuthorDialogComponent, {
       width: '300px'
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 
@@ -25,7 +25,7 @@ export class CreationComponent {
       width: '300px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 }

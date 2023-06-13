@@ -25,20 +25,6 @@ h1 {
   margin-left: 10px;
 }
 
-.app-book-list {
-  background-color: #f5f5f5;
-  padding: 10px;
-}
-
-.app-rental-list {
-  background-color: #f5f5f5;
-  padding: 10px;
-}
-
-table.book-table {
-  width: 100%;
-  border-collapse: collapse;
-}
 
 table.book-table th,
 table.book-table td {
@@ -51,11 +37,6 @@ table.book-table th {
   text-align: left;
 }
 
-table.rental-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 table.rental-table th,
 table.rental-table td {
   padding: 8px;
@@ -65,10 +46,6 @@ table.rental-table td {
 table.rental-table th {
   background-color: #f2f2f2;
   text-align: left;
-}
-
-.icon-tick {
-  color: green;
 }
 
 .icon-cross {

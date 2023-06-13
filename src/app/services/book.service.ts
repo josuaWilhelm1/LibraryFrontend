@@ -41,7 +41,6 @@ export class BookService {
       author: {id: authorId},
       genre: bookGenre
     };
-    let result = this.http.post(this.baseUrlOne, bookData);
-    return result;
+    return this.http.post(this.baseUrlOne, bookData);
   }
 }

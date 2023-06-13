@@ -21,7 +21,7 @@ export class AuthorDialogComponent {
 
   onSave(): void {
     this.authorService.createAuthor(this.authorName).subscribe(
-      (response) => {
+      () => {
         this.authorUpdateService.notifyAuthorCreated();
         this.dialogRef.close();
       },

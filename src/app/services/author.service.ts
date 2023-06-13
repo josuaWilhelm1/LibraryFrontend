@@ -22,7 +22,6 @@ export class AuthorService {
 
   createAuthor(authorName: string): Observable<any> {
     const authorData: AuthorData = {name: authorName};
-    let result = this.http.post(this.apiUrlOne, authorData);
-    return result;
+    return this.http.post(this.apiUrlOne, authorData);
   }
 }

@@ -3,12 +3,3 @@ h2 {
   margin-bottom: 10px;
 }
 
-.mat-form-field {
-  width: 100%;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}

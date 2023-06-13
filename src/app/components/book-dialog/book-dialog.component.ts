@@ -46,7 +46,7 @@ export class BookDialogComponent implements OnInit {
       return;
     }
     this.bookService.createBook(this.bookTitle, this.selectedAuthor.id, this.bookGenre).subscribe(
-      (response) => {
+      () => {
         this.bookUpdateService.notifyBookCreated();
         this.dialogRef.close();
       },
