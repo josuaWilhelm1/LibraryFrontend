@@ -6,7 +6,6 @@ import {AuthorService} from '../../services/author.service';
 import {RentalService} from '../../services/rental.service';
 import {BookUpdateService} from "../../services/book-update.service";
 import {RentalUpdateService} from "../../services/rental-update.service";
-import {RentalReturnService} from "../../services/rental-return.service";
 import {AuthorUpdateService} from "../../services/author-update.service";
 
 @Component({
@@ -34,7 +33,6 @@ export class BookListComponent implements OnInit {
     private rentalService: RentalService,
     private bookUpdateService: BookUpdateService,
     private rentalUpdateService: RentalUpdateService,
-    private rentalReturnService: RentalReturnService,
     private authorUpdateService: AuthorUpdateService,
 
   ) {
@@ -52,7 +50,7 @@ export class BookListComponent implements OnInit {
       this.getAvailableBooks();
       this.getUnavailableBooks();
     })
-    this.rentalReturnService.rentalReturn$.subscribe(() => {
+    this.rentalUpdateService.rentalReturned$.subscribe(() => {
       this.getAvailableBooks();
       this.getUnavailableBooks();
     })

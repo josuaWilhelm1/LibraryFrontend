@@ -1,10 +1,7 @@
 import {Component} from '@angular/core';
-import {MatDialogRef, MatDialog} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {AuthorDialogComponent} from '../author-dialog/author-dialog.component';
 import {BookDialogComponent} from "../book-dialog/book-dialog.component";
-
-// import { BookDialogComponent } from '../bookDialog/bookDialog.component';
-
 
 @Component({
   selector: 'app-creation',

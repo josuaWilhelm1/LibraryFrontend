@@ -4,9 +4,6 @@ import {Observable} from 'rxjs';
 import {Rental} from '../models/rental.model';
 import {Book} from "../models/book.model";
 import {RentalData} from "../models/rentalData.model";
-import {RentalReturnService} from "./rental-return.service";
-import {RentalUpdateService} from "./rental-update.service";
-
 
 @Injectable({
   providedIn: 'root'

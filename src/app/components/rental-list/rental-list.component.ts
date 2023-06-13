@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Rental} from '../../models/rental.model';
 import {RentalService} from '../../services/rental.service';
-import {RentalReturnService} from "../../services/rental-return.service";
 import {RentalUpdateService} from "../../services/rental-update.service";
 
 @Component({
@@ -18,7 +17,6 @@ export class RentalListComponent implements OnInit {
   returnedRentalsError:String="";
 
   constructor(private rentalService: RentalService,
-              private rentalReturnService: RentalReturnService,
               private rentalUpdateService: RentalUpdateService
   ) {
   }
@@ -32,7 +30,7 @@ export class RentalListComponent implements OnInit {
       this.getReturnedRentals();
       this.getOverdueRentals();
     })
-    this.rentalReturnService.rentalReturn$.subscribe(() => {
+    this.rentalUpdateService.rentalReturned$.subscribe(() => {
       this.getOngoingRentals();
       this.getReturnedRentals();
       this.getOverdueRentals();
@@ -96,7 +94,7 @@ export class RentalListComponent implements OnInit {
   returnBook(rental: Rental) {
     this.rentalService.returnRental(rental.id).subscribe(
       () => {
-        this.rentalReturnService.notifyRentalReturned();
+        this.rentalUpdateService.notifyRentalReturned();
       },
       (error) => {
         console.error('Failed to return book:', error);
